@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <RootNamespace>PollutionPatrol.Modules.Report._Application</RootNamespace>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\PollutionPatrol.Modules.Report..Domain\PollutionPatrol.Modules.Report..Domain.csproj" />
+      <ProjectReference Include="..\PollutionPatrol.Modules.Report..Infrastructure\PollutionPatrol.Modules.Report..Infrastructure.csproj" />
+    </ItemGroup>
+
+</Project>

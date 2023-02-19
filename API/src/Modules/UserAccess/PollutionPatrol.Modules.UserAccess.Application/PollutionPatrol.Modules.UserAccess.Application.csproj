@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\PollutionPatrol.Modules.UserAccess.Domain\PollutionPatrol.Modules.UserAccess.Domain.csproj" />
+      <ProjectReference Include="..\PollutionPatrol.Modules.UserAccess.Infrastructure\PollutionPatrol.Modules.UserAccess.Infrastructure.csproj" />
+    </ItemGroup>
+
+</Project>
