@@ -11,4 +11,8 @@
       <ProjectReference Include="..\PollutionPatrol.BuildingBlocks.Infrastructure\PollutionPatrol.BuildingBlocks.Infrastructure.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <PackageReference Include="Mediator.Abstractions" Version="2.0.30" />
+    </ItemGroup>
+
 </Project>
