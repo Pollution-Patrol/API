@@ -20,6 +20,7 @@ The app is designed with a modular monolithic architecture, consisting of the fo
 2. Report: Stores reports submitted by users, including geolocation data, photos or videos of evidence, descriptions, and contact information.
 3. Review: Allows real employees or volunteers to review and approve reports, and leave comments or feedback.
 4. Organization: Stores volunteer organizations and groups, allowing users to search for and join organizations, and for organizations to post events, activities, and news updates to their members.
+5. Admin: Uses by stuff.
 
 ## **Installation**
 
@@ -28,8 +29,9 @@ To run the Pollution Patrol app locally, you will need to follow these steps:
 1. Clone the repository to your local machine.
 2. Open the project in your preferred IDE, such as Visual Studio.
 3. Install the necessary dependencies, including ASP.NET Core 7 and MS SQL.
-4. Set up the database and run the necessary migrations.
-5. Start the server and navigate to the local address in your web browser.
+4. Set up the database and run the necessary migrations for each module.
+5. Configure the secrets used in the app by using the .NET secret tool. To do this, use 'Example.Secret.Json' file.
+6. Start the server and navigate to the local address in your web browser.
 
 ## **Contributing**
 
@@ -37,8 +39,8 @@ We welcome contributions to Pollution Patrol from developers of all skill levels
 
 ## **License**
 
-Pollution Patrol is released under the **[MIT License](https://opensource.org/licenses/MIT)**, which means that you can use, copy, modify,distribute, and sublicense the app for both commercial and non-commercial purposes, as long as you include the original copyright notice and license terms. However, the app is provided "as is" without any warranty, and the developers will not be liable for any damages or losses resulting from the use or inability to use the app.
+Pollution Patrol is released under the **[MIT License](https://opensource.org/licenses/MIT)**, which means that you can use, copy, modify, distribute, and sublicense the app for both commercial and non-commercial purposes, as long as you include the original copyright notice and license terms. However, the app is provided "as is" without any warranty, and the developers will not be liable for any damages or losses resulting from the use or inability to use the app.
 
 ## Contact
 
-If you have any questions, comments, or feedback about Pollution Patrol, please feel free to contact us at **[support@pollutionpatrol.com](mailto:support@pollutionpatrol.com)**. We appreciate your interest and support in our mission to fight pollution and make the world a cleaner and safer place.
+If you have any questions, comments, or feedback about Pollution Patrol, please feel free to contact us at **[support@pollutionpatrol.com](mailto:support@pollutionpatrol.com)**. We appreciate your interest and support in our mission to fight pollution and make the world a cleaner and safer place.
