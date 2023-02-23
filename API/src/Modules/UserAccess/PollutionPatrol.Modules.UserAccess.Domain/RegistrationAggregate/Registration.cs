@@ -53,7 +53,7 @@ public sealed class Registration : Entity, IAggregateRoot
 
     public ApplicationUser CreateUser()
     {
-        CheckRule(new RegistrationCannotBeConfirmedMoreThanOnesDomainRule(Status));
+        CheckRule(new UserCannotBeCreatedWhenRegistrationIsNotConfirmedRule(Status));
 
         return ApplicationUser.CreateFromRegistration(this);
     }
