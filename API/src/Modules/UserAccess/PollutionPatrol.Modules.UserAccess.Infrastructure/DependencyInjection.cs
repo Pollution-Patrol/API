@@ -15,5 +15,6 @@ public static class DependencyInjection
             options.UseSqlServer(connection));
 
         services.AddScoped<IUserAccessDbContext, UserAccessDbContext>();
+        services.AddScoped<IUserUniqueChecker, UserUniqueChecker>();
     }
 }
