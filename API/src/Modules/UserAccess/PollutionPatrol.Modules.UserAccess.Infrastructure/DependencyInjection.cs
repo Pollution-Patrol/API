@@ -16,5 +16,6 @@ public static class DependencyInjection
 
         services.AddScoped<IUserAccessDbContext, UserAccessDbContext>();
         services.AddScoped<IUserUniqueChecker, UserUniqueChecker>();
+        services.AddScoped<IPasswordManager, PasswordManager>();
     }
 }
