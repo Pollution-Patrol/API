@@ -4,6 +4,12 @@ internal sealed class PasswordManager : IPasswordManager
 {
     private const int Length = 16;
     
+    /// <summary>
+    /// Hashes a password using Argon2id.
+    /// </summary>
+    /// <param name="password">The password to hash.</param>
+    /// <param name="salt">The salt to use when hashing.</param>
+    /// <returns>The hashed password.</returns>
     public async Task<byte[]> HashPasswordAsync(string password, byte[] salt)
     {
         if (string.IsNullOrWhiteSpace(password))
@@ -22,6 +28,13 @@ internal sealed class PasswordManager : IPasswordManager
         return await argon2.GetBytesAsync(Length);
     }
 
+    /// <summary>
+    /// Verifies a password against a hashed password and salt.
+    /// </summary>
+    /// <param name="password">The password to verify.</param>
+    /// <param name="hash">The hashed password to verify against.</param>
+    /// <param name="salt">The salt used when hashing the password.</param>
+    /// <returns>True if the password is verified, false otherwise.</returns>
     public async Task<bool> VerifyPasswordAsync(string password, byte[] hash, byte[] salt)
     {
         if (string.IsNullOrWhiteSpace(password))
@@ -37,6 +50,10 @@ internal sealed class PasswordManager : IPasswordManager
         return hash.SequenceEqual(newHash);
     }
 
+    /// <summary>
+    /// Generates a random salt.
+    /// </summary>
+    /// <returns>The generated salt.</returns>
     public byte[] GenerateSalt()
     {
         var salt = new byte[Length];
