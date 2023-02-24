@@ -8,5 +8,6 @@ public static class DependencyInjection
         
         services.AddScoped<IDomainEventsAccessor, DomainEventsAccessor>();
         services.AddScoped<IDomainEventsDispatcher, DomainEventsDispatcher>();
+        services.AddScoped<IEmailSender, EmailSender>();
     }
 }
