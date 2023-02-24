@@ -7,4 +7,8 @@
         <RootNamespace>PollutionPatrol.Modules.Admin.Core</RootNamespace>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\BuildingBlocks\PollutionPatrol.BuildingBlocks.Domain\PollutionPatrol.BuildingBlocks.Domain.csproj" />
+    </ItemGroup>
+
 </Project>

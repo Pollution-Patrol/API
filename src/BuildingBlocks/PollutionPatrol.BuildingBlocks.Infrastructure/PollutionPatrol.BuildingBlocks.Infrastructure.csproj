@@ -7,6 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\PollutionPatrol.BuildingBlocks.Application\PollutionPatrol.BuildingBlocks.Application.csproj" />
       <ProjectReference Include="..\PollutionPatrol.BuildingBlocks.Domain\PollutionPatrol.BuildingBlocks.Domain.csproj" />
     </ItemGroup>
 

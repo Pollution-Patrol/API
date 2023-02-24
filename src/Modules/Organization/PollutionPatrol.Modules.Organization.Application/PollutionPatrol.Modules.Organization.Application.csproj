@@ -7,8 +7,8 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\..\..\BuildingBlocks\PollutionPatrol.BuildingBlocks.Application\PollutionPatrol.BuildingBlocks.Application.csproj" />
       <ProjectReference Include="..\PollutionPatrol.Modules.Organization.Domain\PollutionPatrol.Modules.Organization.Domain.csproj" />
-      <ProjectReference Include="..\PollutionPatrol.Modules.Organization.Infrastructure\PollutionPatrol.Modules.Organization.Infrastructure.csproj" />
     </ItemGroup>
 
 </Project>
