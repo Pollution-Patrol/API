@@ -5,6 +5,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+ConfigureBuildingBlocks();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -21,3 +23,11 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+void ConfigureBuildingBlocks()
+{
+    builder.Services.AddBuildingBlocksDependencyInjection();
+    
+    builder.Services.Configure<ApiSettings>(
+        builder.Configuration.GetSection(WebHostDefaults.ServerUrlsKey));
+}
