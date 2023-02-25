@@ -1,8 +1,8 @@
 namespace PollutionPatrol.BuildingBlocks.Application.Exceptions;
 
-public class InvalidRequestException : Exception
+public class InvalidMessageException : Exception
 {
-    public InvalidRequestException(List<string> errors, string? message = default) : base(message)
+    public InvalidMessageException(List<string> errors, string? message = default) : base(message)
     {
         Errors = errors;
     }

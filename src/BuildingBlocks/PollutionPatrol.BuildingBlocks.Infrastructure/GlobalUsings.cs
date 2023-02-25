@@ -1,8 +1,9 @@
 ﻿global using PollutionPatrol.BuildingBlocks.Domain.Interfaces;
 global using PollutionPatrol.BuildingBlocks.Domain.Models;
+global using PollutionPatrol.BuildingBlocks.Application.Pipelines;
+global using PollutionPatrol.BuildingBlocks.Application.Email;
 global using PollutionPatrol.BuildingBlocks.Infrastructure.DomainEventsDispatching;
 global using PollutionPatrol.BuildingBlocks.Infrastructure.Email;
-global using PollutionPatrol.BuildingBlocks.Application.Email;
 global using Microsoft.EntityFrameworkCore;
 global using Microsoft.Extensions.DependencyInjection;
 global using Microsoft.Extensions.Configuration;
