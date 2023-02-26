@@ -1,4 +1,5 @@
-﻿global using PollutionPatrol.BuildingBlocks.Infrastructure.DomainEventsDispatching;
+﻿global using PollutionPatrol.BuildingBlocks.Infrastructure;
+global using PollutionPatrol.BuildingBlocks.Infrastructure.DomainEventsDispatching;
 global using PollutionPatrol.BuildingBlocks.Domain.Models;
 global using PollutionPatrol.Modules.UserAccess.Application.Contracts;
 global using PollutionPatrol.Modules.UserAccess.Domain.RegistrationAggregate;
