@@ -1,5 +1,3 @@
-using Serilog.Formatting.Compact;
-
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Host.UseSerilog((context, services, configuration) => configuration
@@ -21,6 +19,8 @@ var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 app.UseSerilogRequestLogging();
+
+app.UseGlobalExceptionHandler();
 
 if (app.Environment.IsDevelopment())
 {
