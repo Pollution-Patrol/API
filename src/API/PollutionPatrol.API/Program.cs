@@ -1,106 +1,73 @@
-using PollutionPatrol.BuildingBlocks.Application.Options;
-using PollutionPatrol.Modules.UserAccess.Infrastructure;
+Log.Logger = new LoggerConfiguration()
+    .WriteTo.Console()
+    .CreateBootstrapLogger();
 
-var builder = WebApplication.CreateBuilder(args);
+Log.Information("Starting up!");
 
-builder.Host.UseSerilog((context, services, configuration) => configuration
-    .ReadFrom.Configuration(context.Configuration)
-    .ReadFrom.Services(services)
-    .Enrich.FromLogContext()
-    .WriteTo.Console(outputTemplate:
-        "[{Timestamp:HH:mm:ss} {Level:u3}] {Message:lj}{NewLine}{Exception}")
-    .WriteTo.File(new CompactJsonFormatter(), "logs/logs"));
-
-// Add services to the container.
-builder.Services.AddControllers();
-builder.Services.AddEndpointsApiExplorer();
-
-builder.Services.AddSwaggerGen(c =>
+try
 {
-    c.SwaggerDoc("v1", new OpenApiInfo { Title = "PollutionPatrol API", Version = "v1" });
-    c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
-    {
-        Description = @"JWT Authorization header using the Bearer scheme. \r\n\r\n 
-                      Enter 'Bearer' [space] and then your token in the text input below.
-                      \r\n\r\nExample: 'Bearer 12345abcdef'",
-        Name = "Authorization",
-        In = ParameterLocation.Header,
-        Type = SecuritySchemeType.ApiKey,
-        Scheme = "Bearer"
-    });
+    Log.Information("");
 
-    c.AddSecurityRequirement(new OpenApiSecurityRequirement
-    {
-        {
-            new OpenApiSecurityScheme
-            {
-                Reference = new OpenApiReference
-                {
-                    Type = ReferenceType.SecurityScheme,
-                    Id = "Bearer"
-                },
-                Scheme = "oauth2",
-                Name = "Bearer",
-                In = ParameterLocation.Header,
-            },
-            new List<string>()
-        }
-    });
-});
+    var builder = WebApplication.CreateBuilder(args);
 
-var key = Encoding.ASCII.GetBytes(builder.Configuration[$"{nameof(SecurityOptions)}:JwtSecretKey"]);
-builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-    .AddJwtBearer(config =>
-    {
-        config.RequireHttpsMetadata = false;
-        config.SaveToken = true;
-        config.TokenValidationParameters = new TokenValidationParameters
-        {
-            ValidateIssuerSigningKey = true,
-            IssuerSigningKey = new SymmetricSecurityKey(key),
-            ValidateIssuer = false,
-            ValidateAudience = false
-        };
-    });
-
-builder.Services.AddOptions<EmailOptions>()
-    .BindConfiguration(WebHostDefaults.ServerUrlsKey)
-    .ValidateDataAnnotations()
-    .ValidateOnStart();
-
-builder.Services.AddOptions<SecurityOptions>()
-    .BindConfiguration(SecurityOptions.SectionName)
-    .ValidateDataAnnotations()
-    .ValidateOnStart();
-
-builder.Services.AddOptions<EmailOptions>()
-    .BindConfiguration(EmailOptions.SectionName)
-    .ValidateDataAnnotations()
-    .ValidateOnStart();
-
-builder.Services.AddMediator();
-
-builder.Services.AddBuildingBlocksDependencyInjection(builder.Configuration);
-builder.Services.AddUserAccessModule(builder.Configuration);
-
-var app = builder.Build();
-
-// Configure the HTTP request pipeline.
-app.UseSerilogRequestLogging();
-
-app.UseGlobalExceptionHandler();
-
-if (app.Environment.IsDevelopment())
+    builder.Host.UseSerilog((context, services, configuration) => configuration
+        .ReadFrom.Configuration(context.Configuration)
+        .ReadFrom.Services(services)
+        .Enrich.FromLogContext()
+        .WriteTo.Console(outputTemplate:
+            "[{Timestamp:HH:mm:ss} {Level:u3}] {Message:lj}{NewLine}{Exception}")
+        .WriteTo.File(new CompactJsonFormatter(), "logs/logs"));
+    // Add services to the container.
+    ConfigureServices(builder.Services, builder.Configuration);
+    var app = builder.Build();
+    // Configure the HTTP request pipeline.
+    Configure(app);
+    app.Run();
+}
+catch (Exception ex)
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    Log.Fatal(ex, "Application terminated unexpectedly");
+}
+finally
+{
+    Log.CloseAndFlush();
 }
 
-app.UseHttpsRedirection();
+void ConfigureServices(IServiceCollection services, IConfiguration configuration)
+{
+    services.AddControllers();
+    services.AddEndpointsApiExplorer();
+    services.AddSwaggerDoc();
 
-app.UseAuthentication();
-app.UseAuthorization();
+    services.AddJwtAuthentication(configuration);
 
-app.MapControllers();
+    services.AddOptionsConfiguration();
 
-app.Run();
+    services.AddValidatorsFromAssembly(typeof(Program).Assembly);
+    services.AddMediator();
+
+    // configure modules
+    services.AddBuildingBlocks(configuration);
+    services.AddUserAccessModule(configuration);
+}
+
+void Configure(WebApplication app)
+{
+    if (app.Environment.IsDevelopment())
+    {
+        app.UseSwaggerDoc();
+    }
+
+    app.UseSerilogRequestLogging();
+
+    app.UseGlobalExceptionHandler();
+
+    app.UseHttpsRedirection();
+
+    app.UseAuthentication();
+    app.UseAuthorization();
+
+    app.MapControllers();
+
+    app.Run();
+}
