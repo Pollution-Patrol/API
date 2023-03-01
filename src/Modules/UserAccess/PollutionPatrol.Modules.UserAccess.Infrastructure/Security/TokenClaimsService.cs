@@ -2,17 +2,18 @@
 
 internal sealed class TokenClaimsService : ITokenClaimsService
 {
-    private readonly IConfiguration _config;
+    private readonly SecurityOptions _securityOptions;
 
-    public TokenClaimsService(IConfiguration config) => _config = config;
+    public TokenClaimsService(IOptions<SecurityOptions> options) => _securityOptions = options.Value;
 
     public string GenerateToken(ApplicationUser user)
     {
         var tokenHandler = new JwtSecurityTokenHandler();
-        var key = Encoding.ASCII.GetBytes(_config[SecretKeys.JwtSecretSecretKey]); // JwtSecretKey from .NET secrets manager  
+        var key = Encoding.ASCII.GetBytes(_securityOptions.JwtSecretKey);
 
         var claims = new List<Claim>
         {
+            // todo: add roles
             new(ClaimTypes.Email, user.Email)
         };
 

@@ -2,7 +2,7 @@ namespace PollutionPatrol.BuildingBlocks.Infrastructure;
 
 public static class DependencyInjection
 {
-    public static void AddBuildingBlocksDependencyInjection(this IServiceCollection services)
+    public static void AddBuildingBlocksDependencyInjection(this IServiceCollection services, IConfiguration config)
     {
         services.AddTransient(typeof(IPipelineBehavior<,>), typeof(LoggingPipelineBehaviour<,>));
         services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationPipelineBehaviour<,>));

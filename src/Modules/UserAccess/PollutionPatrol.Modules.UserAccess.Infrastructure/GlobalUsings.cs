@@ -1,6 +1,6 @@
-﻿global using PollutionPatrol.BuildingBlocks.Infrastructure;
-global using PollutionPatrol.BuildingBlocks.Infrastructure.DomainEventsDispatching;
+﻿global using PollutionPatrol.BuildingBlocks.Infrastructure.DomainEventsDispatching;
 global using PollutionPatrol.BuildingBlocks.Domain.Models;
+global using PollutionPatrol.BuildingBlocks.Application.Options;
 global using PollutionPatrol.Modules.UserAccess.Application.Contracts;
 global using PollutionPatrol.Modules.UserAccess.Domain.RegistrationAggregate;
 global using PollutionPatrol.Modules.UserAccess.Domain.UserAggregate;
@@ -12,6 +12,7 @@ global using Microsoft.EntityFrameworkCore.Design;
 global using Microsoft.EntityFrameworkCore.Metadata.Builders;
 global using Microsoft.Extensions.Configuration;
 global using Microsoft.Extensions.DependencyInjection;
+global using Microsoft.Extensions.Options;
 global using Microsoft.IdentityModel.Tokens;
 global using System.Reflection;
 global using System.Security.Claims;

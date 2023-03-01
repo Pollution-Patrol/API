@@ -1,4 +1,5 @@
-﻿global using System.Reflection;
+﻿global using System.ComponentModel.DataAnnotations;
+global using System.Reflection;
 global using FluentValidation;
 global using PollutionPatrol.BuildingBlocks.Domain.Interfaces;
 

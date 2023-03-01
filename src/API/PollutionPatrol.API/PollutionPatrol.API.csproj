@@ -9,6 +9,10 @@
   </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="Mediator.SourceGenerator" Version="2.0.30">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
         <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.3" />
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.1" />
         <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
@@ -18,6 +22,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\BuildingBlocks\PollutionPatrol.BuildingBlocks.Infrastructure\PollutionPatrol.BuildingBlocks.Infrastructure.csproj" />
+      <ProjectReference Include="..\..\Modules\UserAccess\PollutionPatrol.Modules.UserAccess.Infrastructure\PollutionPatrol.Modules.UserAccess.Infrastructure.csproj" />
     </ItemGroup>
 
     <ItemGroup>

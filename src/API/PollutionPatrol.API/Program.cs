@@ -1,3 +1,6 @@
+using PollutionPatrol.BuildingBlocks.Application.Options;
+using PollutionPatrol.Modules.UserAccess.Infrastructure;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Host.UseSerilog((context, services, configuration) => configuration
@@ -45,7 +48,7 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
-var key = Encoding.ASCII.GetBytes(builder.Configuration[SecretKeys.JwtSecretSecretKey]);
+var key = Encoding.ASCII.GetBytes(builder.Configuration[$"{nameof(SecurityOptions)}:JwtSecretKey"]);
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(config =>
     {
@@ -60,8 +63,25 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         };
     });
 
+builder.Services.AddOptions<EmailOptions>()
+    .BindConfiguration(WebHostDefaults.ServerUrlsKey)
+    .ValidateDataAnnotations()
+    .ValidateOnStart();
 
-ConfigureBuildingBlocks();
+builder.Services.AddOptions<SecurityOptions>()
+    .BindConfiguration(SecurityOptions.SectionName)
+    .ValidateDataAnnotations()
+    .ValidateOnStart();
+
+builder.Services.AddOptions<EmailOptions>()
+    .BindConfiguration(EmailOptions.SectionName)
+    .ValidateDataAnnotations()
+    .ValidateOnStart();
+
+builder.Services.AddMediator();
+
+builder.Services.AddBuildingBlocksDependencyInjection(builder.Configuration);
+builder.Services.AddUserAccessModule(builder.Configuration);
 
 var app = builder.Build();
 
@@ -84,11 +104,3 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
-
-void ConfigureBuildingBlocks()
-{
-    builder.Services.AddBuildingBlocksDependencyInjection();
-
-    builder.Services.Configure<ApiSettings>(
-        builder.Configuration.GetSection(WebHostDefaults.ServerUrlsKey));
-}

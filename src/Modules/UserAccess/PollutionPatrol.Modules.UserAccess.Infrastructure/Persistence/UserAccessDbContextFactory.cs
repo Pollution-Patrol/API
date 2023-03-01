@@ -5,7 +5,7 @@ internal sealed class UserAccessDbContextFactory : IDesignTimeDbContextFactory<U
     public UserAccessDbContext CreateDbContext(string[] args)
     {
         var config = new ConfigurationBuilder()
-            .SetBasePath(Directory.GetCurrentDirectory())
+            .SetBasePath(Path.Combine(Directory.GetCurrentDirectory(), "..", "..", "..", "API", "PollutionPatrol.API"))
             .AddJsonFile("appsettings.json")
             .Build();
 
@@ -16,6 +16,4 @@ internal sealed class UserAccessDbContextFactory : IDesignTimeDbContextFactory<U
 
         return new UserAccessDbContext(optionsBuilder.Options, eventsDispatcher: default);
     }
-} 
-
- 
+}

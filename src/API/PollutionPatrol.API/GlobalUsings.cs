@@ -3,7 +3,6 @@ global using Microsoft.AspNetCore.Authentication.JwtBearer;
 global using PollutionPatrol.API.Middlewares;
 global using PollutionPatrol.API.Extensions;
 global using PollutionPatrol.BuildingBlocks.Application.Exceptions;
-global using PollutionPatrol.BuildingBlocks.Application.Settings;
 global using PollutionPatrol.BuildingBlocks.Domain.Exceptions;
 global using PollutionPatrol.BuildingBlocks.Infrastructure;
 global using Microsoft.AspNetCore.Mvc;

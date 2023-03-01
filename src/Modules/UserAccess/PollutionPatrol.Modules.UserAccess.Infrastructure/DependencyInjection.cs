@@ -2,14 +2,9 @@ namespace PollutionPatrol.Modules.UserAccess.Infrastructure;
 
 public static class DependencyInjection
 {
-    public static void AddUserAccessModule(this IServiceCollection services)
+    public static void AddUserAccessModule(this IServiceCollection services, IConfiguration config)
     {
-        var config = new ConfigurationBuilder()
-            .SetBasePath(Directory.GetCurrentDirectory())
-            .AddJsonFile("appsettings.json")
-            .Build();
-
-        var connection = config.GetConnectionString("DefaultConnection");
+        var connection = config.GetConnectionString("UserAccess");
 
         services.AddDbContext<UserAccessDbContext>(options =>
             options.UseSqlServer(connection));
