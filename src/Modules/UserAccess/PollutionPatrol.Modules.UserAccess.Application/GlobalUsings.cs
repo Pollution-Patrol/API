@@ -9,5 +9,4 @@ global using PollutionPatrol.BuildingBlocks.Application.Options;
 global using Microsoft.EntityFrameworkCore;
 global using Microsoft.Extensions.Options;
 global using System.Text;
-global using System.Runtime.CompilerServices;
 global using FluentValidation;
