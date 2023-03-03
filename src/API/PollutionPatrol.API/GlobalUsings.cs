@@ -16,5 +16,6 @@ global using System.Text;
 global using System.Reflection;
 global using FluentValidation;
 global using MediatR;
+global using PollutionPatrol.Modules.UserAccess.Application.Features.UserRegistration;
 global using Serilog;
 global using Serilog.Formatting.Compact;
