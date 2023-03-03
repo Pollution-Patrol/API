@@ -31,6 +31,15 @@ public class GlobalExceptionHandlerMiddleware
     {
         var details = ex switch
         {
+            AuthenticationException e => new ProblemDetails
+            {
+                Title = "Unauthenticated",
+                Type = "https://www.rfc-editor.org/rfc/rfc7231#section-6.5.3",
+                Detail = e.Details,
+                Status = StatusCodes.Status403Forbidden,
+                Instance = context.Request.Path
+            },
+
             AuthorizationException => new ProblemDetails
             {
                 Title = "Unauthorized",
