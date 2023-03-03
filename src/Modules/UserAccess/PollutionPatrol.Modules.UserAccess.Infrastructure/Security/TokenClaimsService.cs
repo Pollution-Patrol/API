@@ -11,12 +11,12 @@ internal sealed class TokenClaimsService : ITokenClaimsService
         var tokenHandler = new JwtSecurityTokenHandler();
         var key = Encoding.ASCII.GetBytes(_securityOptions.JwtSecretKey);
 
-        var claims = new List<Claim>
-        {
-            // todo: add roles
-            new(ClaimTypes.Email, user.Email)
-        };
-
+        var claims = new List<Claim>();
+        claims.Add(new Claim(CustomClaimTypes.Email, user.Email));
+        
+        foreach (var role in user.Roles)
+            claims.Add(new Claim(ClaimTypes.Role, role.Value));
+        
         var tokenDescriptor = new SecurityTokenDescriptor
         {
             Subject = new ClaimsIdentity(claims.ToArray()),
