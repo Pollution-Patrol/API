@@ -1,5 +1,6 @@
 ﻿global using PollutionPatrol.API.Middlewares;
 global using PollutionPatrol.API.Extensions;
+global using PollutionPatrol.API.Models;
 global using PollutionPatrol.BuildingBlocks.Application.Exceptions;
 global using PollutionPatrol.BuildingBlocks.Application.Options;
 global using PollutionPatrol.BuildingBlocks.Domain.Exceptions;
@@ -9,8 +10,11 @@ global using Microsoft.AspNetCore.Mvc;
 global using Microsoft.IdentityModel.Tokens;
 global using Microsoft.OpenApi.Models;
 global using Microsoft.AspNetCore.Authentication.JwtBearer;
+global using Microsoft.AspNetCore.Authorization;
 global using Newtonsoft.Json;
 global using System.Text;
+global using System.Reflection;
 global using FluentValidation;
+global using MediatR;
 global using Serilog;
 global using Serilog.Formatting.Compact;

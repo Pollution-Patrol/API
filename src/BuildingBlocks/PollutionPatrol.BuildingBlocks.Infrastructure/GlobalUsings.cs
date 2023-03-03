@@ -11,4 +11,5 @@ global using Microsoft.Extensions.Configuration;
 global using Microsoft.Extensions.Options;
 global using MimeKit;
 global using MailKit.Net.Smtp;
-global using Mediator;
+global using MediatR;
+global using System.Reflection;

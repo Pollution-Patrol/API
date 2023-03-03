@@ -4,8 +4,11 @@ public static class DependencyInjection
 {
     public static void AddBuildingBlocks(this IServiceCollection services, IConfiguration config)
     {
-        services.AddTransient(typeof(IPipelineBehavior<,>), typeof(LoggingPipelineBehaviour<,>));
-        services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationPipelineBehaviour<,>));
+        services.AddMediatR(x => x.RegisterServicesFromAssemblies(
+                Assembly.Load("PollutionPatrol.BuildingBlocks.Application"),
+                Assembly.Load("PollutionPatrol.BuildingBlocks.Infrastructure"))
+            .AddOpenBehavior(typeof(LoggingPipelineBehaviour<,>))
+            .AddOpenBehavior(typeof(ValidationPipelineBehaviour<,>)));
 
         services.AddScoped<IDomainEventsAccessor, DomainEventsAccessor>();
         services.AddScoped<IDomainEventsDispatcher, DomainEventsDispatcher>();

@@ -43,8 +43,8 @@ void ConfigureServices(IServiceCollection services, IConfiguration configuration
 
     services.AddOptionsConfiguration();
 
-    services.AddValidatorsFromAssembly(typeof(Program).Assembly);
-    services.AddMediator();
+    services.AddValidatorsFromAssembly(typeof(Program).Assembly, ServiceLifetime.Transient);
+    services.AddMediatR(x => x.RegisterServicesFromAssembly(typeof(Program).Assembly));
 
     // configure modules
     services.AddBuildingBlocks(configuration);

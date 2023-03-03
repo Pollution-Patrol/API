@@ -9,6 +9,9 @@ public static class DependencyInjection
         services.AddDbContext<UserAccessDbContext>(options =>
             options.UseSqlServer(connection));
 
+        services.AddMediatR(x => x.RegisterServicesFromAssemblies(Assembly.Load("PollutionPatrol.Modules.UserAccess.Application")));
+        services.AddValidatorsFromAssembly(Assembly.Load("PollutionPatrol.Modules.UserAccess.Application"));
+
         services.AddScoped<IUserAccessDbContext, UserAccessDbContext>();
         services.AddScoped<IUserUniqueChecker, UserUniqueChecker>();
         services.AddScoped<IPasswordManager, PasswordManager>();

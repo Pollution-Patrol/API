@@ -40,8 +40,8 @@ public static class ServiceCollectionExtensions
 
     public static void AddOptionsConfiguration(this IServiceCollection services)
     {
-        services.AddOptions<EmailOptions>()
-            .BindConfiguration(WebHostDefaults.ServerUrlsKey)
+        services.AddOptions<ApiOptions>()
+            .BindConfiguration(ApiOptions.SectionName)
             .ValidateDataAnnotations()
             .ValidateOnStart();
 

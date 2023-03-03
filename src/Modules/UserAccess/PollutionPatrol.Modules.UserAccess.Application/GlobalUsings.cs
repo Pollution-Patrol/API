@@ -1,5 +1,13 @@
-﻿global using PollutionPatrol.BuildingBlocks.Application.Interfaces;
-global using PollutionPatrol.Modules.UserAccess.Domain.RegistrationAggregate;
+﻿global using PollutionPatrol.Modules.UserAccess.Domain.RegistrationAggregate;
 global using PollutionPatrol.Modules.UserAccess.Domain.UserAggregate;
-
+global using PollutionPatrol.Modules.UserAccess.Domain.RegistrationAggregate.Events;
+global using PollutionPatrol.Modules.UserAccess.Application.Contracts;
+global using PollutionPatrol.BuildingBlocks.Application.Interfaces;
+global using PollutionPatrol.BuildingBlocks.Application.Email;
+global using PollutionPatrol.BuildingBlocks.Application.Exceptions;
+global using PollutionPatrol.BuildingBlocks.Application.Options;
 global using Microsoft.EntityFrameworkCore;
+global using Microsoft.Extensions.Options;
+global using System.Text;
+global using System.Runtime.CompilerServices;
+global using FluentValidation;
