@@ -4,12 +4,16 @@ namespace PollutionPatrol.API.Controllers;
 [AllowAnonymous]
 public sealed class RegistrationController : ApiController
 {
+    private readonly IUserAccessModule _userAccessModule;
+
+    public RegistrationController(IUserAccessModule userAccessModule) => _userAccessModule = userAccessModule;
+
     [HttpPost("api/registration")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<ActionResult> RegisterNewUserAsync([FromBody] RegistrationRequest request)
     {
-        await Mediator.Send(new RegisterNewUserCommand(request.Email, request.Password));
+        await _userAccessModule.ExecuteCommandAsync(new RegisterNewUserCommand(request.Email, request.Password));
         return Ok();
     }
 
@@ -18,7 +22,7 @@ public sealed class RegistrationController : ApiController
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<ActionResult> ConfirmRegistrationAsync([FromQuery] string confirmationToken)
     {
-        await Mediator.Send(new ConfirmRegistrationCommand(confirmationToken));
+        await _userAccessModule.ExecuteCommandAsync(new ConfirmRegistrationCommand(confirmationToken));
         return Ok();
     }
 }

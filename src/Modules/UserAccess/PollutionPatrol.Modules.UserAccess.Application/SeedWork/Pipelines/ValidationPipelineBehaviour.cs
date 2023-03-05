@@ -1,6 +1,6 @@
-namespace PollutionPatrol.BuildingBlocks.Application.Pipelines;
+namespace PollutionPatrol.Modules.UserAccess.Application.SeedWork.Pipelines;
 
-public class ValidationPipelineBehaviour<TRequest, TResponse> : 
+internal sealed class ValidationPipelineBehaviour<TRequest, TResponse> :
     IPipelineBehavior<TRequest, TResponse>
     where TRequest : notnull
 {

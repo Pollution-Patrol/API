@@ -2,7 +2,7 @@ namespace PollutionPatrol.Modules.UserAccess.Application.Features.UserRegistrati
 
 public sealed record ConfirmRegistrationCommand(string ConfirmationToken) : ICommand;
 
-public sealed class ConfirmRegistrationCommandHandler : ICommandHandler<ConfirmRegistrationCommand>
+internal sealed class ConfirmRegistrationCommandHandler : ICommandHandler<ConfirmRegistrationCommand>
 {
     private readonly IUserAccessDbContext _accessDbContext;
 
@@ -23,7 +23,7 @@ public sealed class ConfirmRegistrationCommandHandler : ICommandHandler<ConfirmR
     }
 }
 
-public sealed class ConfirmRegistrationCommandValidator : AbstractValidator<ConfirmRegistrationCommand>
+internal sealed class ConfirmRegistrationCommandValidator : AbstractValidator<ConfirmRegistrationCommand>
 {
     public ConfirmRegistrationCommandValidator()
     {

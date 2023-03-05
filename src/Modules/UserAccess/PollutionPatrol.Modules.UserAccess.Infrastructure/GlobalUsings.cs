@@ -1,6 +1,9 @@
 ﻿global using PollutionPatrol.BuildingBlocks.Infrastructure.DomainEventsDispatching;
 global using PollutionPatrol.BuildingBlocks.Domain.Models;
 global using PollutionPatrol.BuildingBlocks.Application.Options;
+global using PollutionPatrol.Modules.UserAccess.Application.SeedWork.Command;
+global using PollutionPatrol.Modules.UserAccess.Application.SeedWork.Query;
+global using PollutionPatrol.Modules.UserAccess.Application.SeedWork.Pipelines;
 global using PollutionPatrol.Modules.UserAccess.Application.Contracts;
 global using PollutionPatrol.Modules.UserAccess.Domain.RegistrationAggregate;
 global using PollutionPatrol.Modules.UserAccess.Domain.UserAggregate;
@@ -21,4 +24,4 @@ global using System.Text;
 global using System.IdentityModel.Tokens.Jwt;
 global using FluentValidation;
 global using Konscious.Security.Cryptography;
-global using PollutionPatrol.BuildingBlocks.Application.Constants;
+global using MediatR;

@@ -2,20 +2,16 @@ namespace PollutionPatrol.Modules.UserAccess.Domain.UserAggregate;
 
 public sealed class ApplicationUser : Entity, IAggregateRoot
 {
-    private ApplicationUser()
-    {
-    }
-
     private ApplicationUser(string email, string passwordHash, string salt, UserRole role)
     {
         Email = email;
         PasswordHash = passwordHash;
         Salt = salt;
         Roles = new List<UserRole> { role };
-
-        AddDomainEvent(new NewApplicationUserRegisteredDomainEvent(Email));
     }
 
+    private ApplicationUser() { }
+    
     public string Email { get; private set; }
     public string PasswordHash { get; private set; }
     public string Salt { get; private set; }

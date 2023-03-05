@@ -1,4 +1,6 @@
-﻿namespace PollutionPatrol.Modules.UserAccess.Infrastructure.Security;
+﻿using ClaimTypes = PollutionPatrol.Modules.UserAccess.Infrastructure.Security.ClaimTypes;
+
+namespace PollutionPatrol.Modules.UserAccess.Infrastructure.Security;
 
 internal sealed class TokenClaimsService : ITokenClaimsService
 {
@@ -12,10 +14,10 @@ internal sealed class TokenClaimsService : ITokenClaimsService
         var key = Encoding.ASCII.GetBytes(_securityOptions.JwtSecretKey);
 
         var claims = new List<Claim>();
-        claims.Add(new Claim(CustomClaimTypes.Email, user.Email));
+        claims.Add(new Claim(ClaimTypes.Email, user.Email));
         
         foreach (var role in user.Roles)
-            claims.Add(new Claim(ClaimTypes.Role, role.Value));
+            claims.Add(new Claim(System.Security.Claims.ClaimTypes.Role, role.Value));
         
         var tokenDescriptor = new SecurityTokenDescriptor
         {

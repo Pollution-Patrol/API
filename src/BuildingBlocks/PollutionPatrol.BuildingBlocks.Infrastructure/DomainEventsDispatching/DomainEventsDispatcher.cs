@@ -15,9 +15,9 @@ internal sealed class DomainEventsDispatcher : IDomainEventsDispatcher
     {
         var domainEvents = _domainEventsAccessor.GetAllDomainEvents(dbContext);
         
+        _domainEventsAccessor.ClearAllDomainEvents(dbContext);
+
         foreach (var domainEvent in domainEvents)
             await _mediator.Publish(domainEvent);
-        
-        _domainEventsAccessor.ClearAllDomainEvents(dbContext);
     }
 }

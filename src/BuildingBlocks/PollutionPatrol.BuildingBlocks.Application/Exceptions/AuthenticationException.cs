@@ -11,6 +11,9 @@ public class AuthenticationException : Exception
     {
     }
 
+    /// <summary>
+    /// Gets the exception details for use in problem details.
+    /// </summary>
     public string Details { get; }
     
     public override string ToString() => $"User is not authenticated: {Message}";

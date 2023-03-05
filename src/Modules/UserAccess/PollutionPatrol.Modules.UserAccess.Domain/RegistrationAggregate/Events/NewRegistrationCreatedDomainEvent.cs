@@ -8,6 +8,6 @@ public sealed class NewRegistrationCreatedDomainEvent : IDomainEvent
         ConfirmationToken = confirmationToken;
     }
 
-    public string UserEmail { get; init; }
-    public string ConfirmationToken { get; init; }
+    public string UserEmail { get; }
+    public string ConfirmationToken { get; }
 }

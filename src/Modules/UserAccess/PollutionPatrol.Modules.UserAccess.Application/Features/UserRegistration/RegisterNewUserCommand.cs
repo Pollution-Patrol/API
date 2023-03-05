@@ -22,7 +22,7 @@ internal sealed class RegisterNewUserCommandHandler : ICommandHandler<RegisterNe
     {
         var salt = _passwordManager.GenerateSalt();
         var hash = await _passwordManager.HashPasswordAsync(command.Password, salt);
-        var confirmToken = Guid.NewGuid().ToString();
+        var confirmToken = $"{Guid.NewGuid()}";
 
         var registration = Registration.Create(
             command.Email,
@@ -36,7 +36,7 @@ internal sealed class RegisterNewUserCommandHandler : ICommandHandler<RegisterNe
     }
 }
 
-public sealed class RegisterNewUserCommandValidator : AbstractValidator<RegisterNewUserCommand>
+internal sealed class RegisterNewUserCommandValidator : AbstractValidator<RegisterNewUserCommand>
 {
     public RegisterNewUserCommandValidator()
     {

@@ -17,15 +17,16 @@ internal sealed class AuthenticateUserCommandHandler : ICommandHandler<Authentic
         _passwordManager = passwordManager;
         _dbContext = dbContext;
     }
-    
+
     public async Task<AuthenticationResult> Handle(AuthenticateUserCommand command, CancellationToken cancellationToken)
     {
         var user = await _dbContext.Users.FirstOrDefaultAsync(x => x.Email.Equals(command.Email));
 
         if (user is null)
             throw new AuthenticationException(details: "Authentication failed. The email you entered is incorrect. Please try again.");
-        
-        var isVerified = await _passwordManager.VerifyPasswordAsync(command.Password, Convert.FromHexString(user.PasswordHash), Convert.FromHexString(user.Salt));
+
+        var isVerified = await _passwordManager.VerifyPasswordAsync(command.Password, Convert.FromHexString(user.PasswordHash),
+            Convert.FromHexString(user.Salt));
         if (isVerified is false)
             throw new AuthenticationException(details: "Authentication failed. The password you entered is incorrect. Please try again.");
 
@@ -34,7 +35,7 @@ internal sealed class AuthenticateUserCommandHandler : ICommandHandler<Authentic
     }
 }
 
-public sealed class AuthenticateUserCommandValidator : AbstractValidator<AuthenticateUserCommand>
+internal sealed class AuthenticateUserCommandValidator : AbstractValidator<AuthenticateUserCommand>
 {
     public AuthenticateUserCommandValidator()
     {

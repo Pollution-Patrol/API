@@ -2,10 +2,6 @@ namespace PollutionPatrol.Modules.UserAccess.Domain.RegistrationAggregate;
 
 public sealed class Registration : Entity, IAggregateRoot
 {
-    private Registration()
-    {
-    }
-
     private Registration(
         string email,
         IUserUniqueChecker userUniqueChecker,
@@ -24,6 +20,8 @@ public sealed class Registration : Entity, IAggregateRoot
 
         AddDomainEvent(new NewRegistrationCreatedDomainEvent(Email, ConfirmationToken));
     }
+
+    private Registration() { }
 
     public string Email { get; init; }
     public string PasswordHash { get; init; }
@@ -47,7 +45,7 @@ public sealed class Registration : Entity, IAggregateRoot
         CheckRule(new RegistrationCannotBeConfirmedMoreThanOnesDomainRule(Status));
 
         Status = RegistrationStatus.Confirmed;
-        
+
         AddDomainEvent(new RegistrationConfirmedDomainEvent(this));
     }
 

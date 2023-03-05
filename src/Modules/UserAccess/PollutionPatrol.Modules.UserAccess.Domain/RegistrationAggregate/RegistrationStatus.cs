@@ -11,6 +11,8 @@ public sealed class RegistrationStatus : ValueObject
 
     protected override IEnumerable<object> GetEqualityComponents()
     {
+        yield return WaitingForConfirmation;
+        yield return Confirmed;
         yield return Value;
     }
 }
