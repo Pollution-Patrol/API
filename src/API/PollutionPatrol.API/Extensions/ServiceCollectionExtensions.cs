@@ -54,6 +54,11 @@ public static class ServiceCollectionExtensions
             .BindConfiguration(EmailOptions.SectionName)
             .ValidateDataAnnotations()
             .ValidateOnStart();
+        
+        services.AddOptions<DropboxOptions>()
+            .BindConfiguration(DropboxOptions.SectionName)
+            .ValidateDataAnnotations()
+            .ValidateOnStart();
     }
 
     public static void AddJwtAuthentication(this IServiceCollection services, IConfiguration config)

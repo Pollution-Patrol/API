@@ -6,7 +6,8 @@ public static class DependencyInjection
     {
         services.AddMediatR(x => x.RegisterServicesFromAssemblies(
             Assembly.Load("PollutionPatrol.BuildingBlocks.Application")));
-        
+
+        services.AddTransient<IFileStorageAccessor, DropboxFileStorageAccessor>();
         services.AddScoped<IDomainEventsAccessor, DomainEventsAccessor>();
         services.AddScoped<IDomainEventsDispatcher, DomainEventsDispatcher>();
         services.AddScoped<IEmailSender, EmailSender>();
