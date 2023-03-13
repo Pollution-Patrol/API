@@ -8,7 +8,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\..\BuildingBlocks\PollutionPatrol.BuildingBlocks.Application\PollutionPatrol.BuildingBlocks.Application.csproj" />
-      <ProjectReference Include="..\PollutionPatrol.Modules.Review.Domain\PollutionPatrol.Modules.Review.Domain.csproj" />
+      <ProjectReference Include="..\PollutionPatrol.Modules.Report.Domain\PollutionPatrol.Modules.Report.Domain.csproj" />
     </ItemGroup>
 
 </Project>
