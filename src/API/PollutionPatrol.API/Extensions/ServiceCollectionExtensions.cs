@@ -1,3 +1,6 @@
+using PollutionPatrol.API.UserAccess;
+using PollutionPatrol.BuildingBlocks.Application.UserAccess;
+
 namespace PollutionPatrol.API.Extensions;
 
 public static class ServiceCollectionExtensions
@@ -77,5 +80,11 @@ public static class ServiceCollectionExtensions
                     ValidateAudience = false
                 };
             });
+    }
+
+    public static void AddCurrentUserAccessor(this IServiceCollection services)
+    {
+        services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+        services.AddScoped<ICurrentUserAccessor, CurrentUserAccessor>();
     }
 }

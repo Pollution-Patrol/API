@@ -43,6 +43,8 @@ void ConfigureServices(IServiceCollection services, IConfiguration configuration
 
     services.AddOptionsConfiguration();
 
+    services.AddCurrentUserAccessor();
+
     // configure modules
     services.AddBuildingBlocks(configuration);
     services.AddUserAccessModule(configuration);
