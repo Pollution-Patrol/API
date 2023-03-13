@@ -14,6 +14,7 @@ internal sealed class TokenClaimsService : ITokenClaimsService
         var key = Encoding.ASCII.GetBytes(_securityOptions.JwtSecretKey);
 
         var claims = new List<Claim>();
+        claims.Add(new Claim(ClaimTypes.Id, user.Id.ToString()));
         claims.Add(new Claim(ClaimTypes.Email, user.Email));
         
         foreach (var role in user.Roles)
