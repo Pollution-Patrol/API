@@ -8,6 +8,7 @@ public static class DependencyInjection
             Assembly.Load("PollutionPatrol.BuildingBlocks.Application")));
 
         services.AddTransient<IFileStorageAccessor, DropboxFileStorageAccessor>();
+        services.AddTransient<IFileValidator, FileValidator>();
         services.AddScoped<IDomainEventsAccessor, DomainEventsAccessor>();
         services.AddScoped<IDomainEventsDispatcher, DomainEventsDispatcher>();
         services.AddScoped<IEmailSender, EmailSender>();
