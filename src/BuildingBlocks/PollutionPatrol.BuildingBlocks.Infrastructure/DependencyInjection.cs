@@ -9,6 +9,7 @@ public static class DependencyInjection
 
         services.AddTransient<IFileStorageAccessor, DropboxFileStorageAccessor>();
         services.AddTransient<IFileValidator, FileValidator>();
+        services.AddTransient<IVideoValidator, VideoValidator>();
         services.AddScoped<IDomainEventsAccessor, DomainEventsAccessor>();
         services.AddScoped<IDomainEventsDispatcher, DomainEventsDispatcher>();
         services.AddScoped<IEmailSender, EmailSender>();
