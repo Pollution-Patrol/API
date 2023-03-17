@@ -1,3 +1,5 @@
+using PollutionPatrol.Modules.Pollution.Infrastructure;
+
 Log.Logger = new LoggerConfiguration()
     .WriteTo.Console()
     .CreateBootstrapLogger();
@@ -48,7 +50,7 @@ void ConfigureServices(IServiceCollection services, IConfiguration configuration
     // configure modules
     services.AddBuildingBlocks(configuration);
     services.AddUserAccessModule(configuration);
-    services.AddReportModule(configuration);
+    services.AddPollutionModule(configuration);
 }
 
 void Configure(WebApplication app)

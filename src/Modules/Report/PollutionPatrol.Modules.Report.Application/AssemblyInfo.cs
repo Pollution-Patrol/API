@@ -1,1 +1,0 @@
-[assembly:InternalsVisibleTo("PollutionPatrol.Modules.Report.Infrastructure")]
