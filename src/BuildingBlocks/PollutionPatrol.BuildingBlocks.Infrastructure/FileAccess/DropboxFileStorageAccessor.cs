@@ -8,10 +8,7 @@ internal sealed class DropboxFileStorageAccessor : IFileStorageAccessor
 
     public async Task<string> SaveFileAsync(string folderPath, string fileName, Stream fileStream)
     {
-        using var client = new DropboxClient(
-            _dropboxOptions.OAuthToken,
-            appKey: _dropboxOptions.Appkey,
-            appSecret: _dropboxOptions.AppSecret);
+        using var client = new DropboxClient(_dropboxOptions.OAuthToken);
 
         await CreateFolderIfNotExists(folderPath, client);
 
@@ -27,10 +24,7 @@ internal sealed class DropboxFileStorageAccessor : IFileStorageAccessor
 
     public async Task<Stream> GetFileAsync(string filePath)
     {
-        using var client = new DropboxClient(
-            _dropboxOptions.OAuthToken,
-            appKey: _dropboxOptions.Appkey,
-            appSecret: _dropboxOptions.AppSecret);
+        using var client = new DropboxClient(_dropboxOptions.OAuthToken);
 
         using var downloadResponse = await client.Files.DownloadAsync(filePath);
 

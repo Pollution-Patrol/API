@@ -13,13 +13,14 @@
         <PackageReference Include="MediatR" Version="12.0.1" />
         <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.3" />
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.1" />
-        <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
         <PackageReference Include="Serilog.AspNetCore" Version="6.1.0" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\..\BuildingBlocks\PollutionPatrol.BuildingBlocks.Infrastructure\PollutionPatrol.BuildingBlocks.Infrastructure.csproj" />
+      <ProjectReference Include="..\..\Modules\Report\PollutionPatrol.Modules.Report.Infrastructure\PollutionPatrol.Modules.Report.Infrastructure.csproj" />
       <ProjectReference Include="..\..\Modules\UserAccess\PollutionPatrol.Modules.UserAccess.Infrastructure\PollutionPatrol.Modules.UserAccess.Infrastructure.csproj" />
     </ItemGroup>
 

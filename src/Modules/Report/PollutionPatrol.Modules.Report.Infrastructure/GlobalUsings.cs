@@ -1,0 +1,17 @@
+﻿global using PollutionPatrol.Modules.Report.Application.SeedWork.Pipelines;
+global using PollutionPatrol.Modules.Report.Application.SeedWork.Command;
+global using PollutionPatrol.Modules.Report.Application.SeedWork.Query;
+global using PollutionPatrol.Modules.Report.Application.Contracts;
+global using PollutionPatrol.Modules.Report.Application.MapConfig;
+global using PollutionPatrol.Modules.Report.Infrastructure.Persistence;
+global using PollutionPatrol.Modules.Report.Domain.ReportAggregate;
+global using PollutionPatrol.BuildingBlocks.Infrastructure.DomainEventsDispatching;
+global using PollutionPatrol.BuildingBlocks.Domain.Models;
+global using Microsoft.Extensions.Configuration;
+global using Microsoft.Extensions.DependencyInjection;
+global using Microsoft.EntityFrameworkCore;
+global using Microsoft.EntityFrameworkCore.Design;
+global using Microsoft.EntityFrameworkCore.Metadata.Builders;
+global using System.Reflection;
+global using FluentValidation;
+global using MediatR;

@@ -48,6 +48,7 @@ void ConfigureServices(IServiceCollection services, IConfiguration configuration
     // configure modules
     services.AddBuildingBlocks(configuration);
     services.AddUserAccessModule(configuration);
+    services.AddReportModule(configuration);
 }
 
 void Configure(WebApplication app)
