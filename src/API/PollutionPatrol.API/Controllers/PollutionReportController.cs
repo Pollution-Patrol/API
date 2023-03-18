@@ -52,4 +52,16 @@ public sealed class PollutionReportController : ApiController
 
         return Ok(reportDto);
     }
+    
+    [HttpPost("api/pollution-reports/{reportId:guid}/reject")]
+    [Produces(typeof(ReportDto))]
+    [ProducesResponseType(StatusCodes.Status100Continue)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult> RejectPollutionReport([FromRoute] Guid reportId)
+    {
+        var reportDto = await _pollutionModule.ExecuteCommandAsync(
+            new RejectPollutionReportCommand(reportId));
+
+        return Ok(reportDto);
+    }
 }
