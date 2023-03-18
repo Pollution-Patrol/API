@@ -2,13 +2,13 @@ namespace PollutionPatrol.API.Controllers;
 
 [ApiController]
 [Authorize]
-public sealed class PollutionController : ApiController
+public sealed class PollutionReportController : ApiController
 {
     private readonly IPollutionModule _pollutionModule;
 
-    public PollutionController(IPollutionModule pollutionModule) => _pollutionModule = pollutionModule;
+    public PollutionReportController(IPollutionModule pollutionModule) => _pollutionModule = pollutionModule;
 
-    [HttpPost("api/pollutions/report")]
+    [HttpPost("api/pollution-reports")]
     [ProducesResponseType(StatusCodes.Status100Continue)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<ActionResult> ReportPollutionAsync([FromBody] ReportPollutionRequest request)
@@ -19,7 +19,7 @@ public sealed class PollutionController : ApiController
         return Ok(reportDto);
     }
 
-    [HttpPost("api/pollutions/report/{id:guid}/evidence")]
+    [HttpPost("api/pollution-reports/{id:guid}/evidence")]
     [ProducesResponseType(StatusCodes.Status100Continue)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<ActionResult> UploadPollutionEvidenceFileAsync([FromRoute] Guid id, IFormFile uploadedFile)
