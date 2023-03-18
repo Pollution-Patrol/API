@@ -7,5 +7,5 @@ internal sealed class ReviewerAssignment : IReviewerAssignment
     public ReviewerAssignment(IPollutionDbContext dbContext) => _dbContext = dbContext;
 
     public bool IsReviewerAvailable(Guid reviewerId) =>
-        !_dbContext.Reports.Any(x => x.DesignatedReviewerId.Equals(reviewerId) && x.Status.Equals(ReportStatus.Reviewing));
+        !_dbContext.Reports.Any(x => x.DesignatedReviewerId.Equals(reviewerId) && x.Status.Value.Equals(ReportStatus.Reviewing));
 }
