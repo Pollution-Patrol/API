@@ -20,13 +20,12 @@ internal sealed class ReportPollutionCommandHandler : ICommandHandler<ReportPoll
         var coordinates = new Point(command.Longitude, command.Latitude);
         var userId = _currentUserAccessor.Id;
 
-        var report = Domain.ReportAggregate.Report.Create(pollutionType, coordinates, userId);
+        var report = Report.Create(pollutionType, coordinates, userId);
 
         await _dbContext.Reports.AddAsync(report);
         await _dbContext.CommitAsync();
 
-        var dto = new ReportDto(report.Id, report.PollutionType.Value, Longitude: coordinates.X, Latitude: coordinates.Y);
-        return dto;
+        return report.Adapt<ReportDto>();
     }
 }
 

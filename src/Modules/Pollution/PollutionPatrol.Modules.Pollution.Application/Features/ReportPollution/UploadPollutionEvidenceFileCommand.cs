@@ -36,8 +36,7 @@ internal sealed class UploadEvidenceFileCommandHandler : ICommandHandler<UploadP
         _dbContext.Reports.Update(report);
         await _dbContext.CommitAsync();
 
-        var dto = report.Adapt<ReportDto>();
-        return dto;
+        return report.Adapt<ReportDto>();
     }
 }
 
