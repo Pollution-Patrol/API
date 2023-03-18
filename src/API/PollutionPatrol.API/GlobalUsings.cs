@@ -12,6 +12,7 @@ global using PollutionPatrol.Modules.UserAccess.Infrastructure;
 global using PollutionPatrol.Modules.Pollution.Application.Contracts;
 global using PollutionPatrol.Modules.Pollution.Application.Features.ReportPollution;
 global using PollutionPatrol.Modules.Pollution.Application.Features.ReviewReport;
+global using PollutionPatrol.Modules.Pollution.Application.Models;
 global using Microsoft.AspNetCore.Mvc;
 global using Microsoft.IdentityModel.Tokens;
 global using Microsoft.OpenApi.Models;
