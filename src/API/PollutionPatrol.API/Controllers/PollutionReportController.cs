@@ -29,4 +29,15 @@ public sealed class PollutionReportController : ApiController
 
         return Ok(reportDto);
     }
+
+    [HttpPost("api/pollution-reports/{reportId:guid}/reviewers/{reviewerId:guid}")]
+    [ProducesResponseType(StatusCodes.Status100Continue)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult> DesignateReportReviewerAsync([FromRoute] Guid reportId, [FromRoute] Guid reviewerId)
+    {
+        var reportDto = await _pollutionModule.ExecuteCommandAsync(
+            new DesignateReportReviewerCommand(reportId, reviewerId));
+
+        return Ok(reportDto);
+    }
 }
