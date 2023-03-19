@@ -58,6 +58,15 @@ public class GlobalExceptionHandlerMiddleware
                 Instance = context.Request.Path
             },
 
+            BadRequestException e => new ProblemDetails
+            {
+                Title = "Bad request",
+                Type = "https://tools.ietf.org/html/rfc7231#section-6.5.1",
+                Detail = e.Details,
+                Status = StatusCodes.Status400BadRequest,
+                Instance = context.Request.Path
+            },
+
             SpecNotFoundException => new ProblemDetails
             {
                 Title = "Specification not found in database",
