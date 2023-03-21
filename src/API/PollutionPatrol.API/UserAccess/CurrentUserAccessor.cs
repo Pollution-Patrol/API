@@ -1,4 +1,3 @@
-using PollutionPatrol.BuildingBlocks.Application.UserAccess;
 using ClaimTypes = PollutionPatrol.Modules.UserAccess.Infrastructure.Security.ClaimTypes;
 
 namespace PollutionPatrol.API.UserAccess;

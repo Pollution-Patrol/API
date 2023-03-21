@@ -5,7 +5,7 @@ namespace PollutionPatrol.BuildingBlocks.Application.Interfaces;
 /// </summary>
 public interface IPagedQuery
 {
-    int? Page { get; }
-    int? Size { get; }
+    int Page { get; }
+    int Size { get; }
 }
 
