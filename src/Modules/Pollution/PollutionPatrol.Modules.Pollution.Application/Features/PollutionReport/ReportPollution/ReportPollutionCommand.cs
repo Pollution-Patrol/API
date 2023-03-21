@@ -1,4 +1,4 @@
-namespace PollutionPatrol.Modules.Pollution.Application.Features.ReportPollution;
+namespace PollutionPatrol.Modules.Pollution.Application.Features.PollutionReport.ReportPollution;
 
 public sealed record ReportPollutionCommand(string PollutionType, double Longitude, double Latitude)
     : ICommand<ReportDto>;

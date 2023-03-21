@@ -1,4 +1,4 @@
-namespace PollutionPatrol.Modules.Pollution.Application.Features.ReviewReport;
+namespace PollutionPatrol.Modules.Pollution.Application.Features.PollutionReport.ReviewReport;
 
 public sealed record ApprovePollutionReportCommand(Guid ReportId) : ICommand<ReportDto>;
 

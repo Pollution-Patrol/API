@@ -1,4 +1,4 @@
-namespace PollutionPatrol.Modules.Pollution.Application.Features.ReportPollution;
+namespace PollutionPatrol.Modules.Pollution.Application.Features.PollutionReport.ReportPollution;
 
 internal sealed class CompletePollutionReportCommand : IDomainEventHandler<ReportPollutionEvidenceFileHasBeenSetDomainEvent>
 {

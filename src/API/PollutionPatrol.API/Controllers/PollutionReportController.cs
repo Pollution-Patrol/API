@@ -1,3 +1,6 @@
+using PollutionPatrol.Modules.Pollution.Application.Features.PollutionReport.ReportPollution;
+using PollutionPatrol.Modules.Pollution.Application.Features.PollutionReport.ReviewReport;
+
 namespace PollutionPatrol.API.Controllers;
 
 [ApiController]

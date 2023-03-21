@@ -1,4 +1,4 @@
-namespace PollutionPatrol.Modules.Pollution.Application.Features.ReportPollution;
+namespace PollutionPatrol.Modules.Pollution.Application.Features.PollutionReport.ReportPollution;
 
 public sealed record UploadPollutionEvidenceFileCommand(Guid ReportId, IFormFile EvidenceFile) : ICommand<ReportDto>;
 
